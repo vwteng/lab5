@@ -23,14 +23,19 @@ function render(entries) {
     container.empty();
     $.each(entries, function(){
         instance = template.clone();
-        instance.find('.first').html(this.first);
-        instance.find('.last').html(this.last);
-        instance.find('.title').html(this.title);
-        instance.find('.dept').html(this.dept);
-        instance.find('.pic').attr({
-            src: this.pic,
-            alt: 'Picture of ' + this.first + ' ' + this.last
-        });
+        for (entries in container) {
+            for (prop in this) {
+                instance.find('.' + prop);
+                if (prop =='pic') {
+                    instance.find('.pic').attr({
+                        src: this.pic,
+                        alt: 'Picture of ' + this.first + ' ' + this.last
+                    });
+                } else {
+                    instance.find('.' + prop).html(this[prop]);
+                }
+            }
+        }
         instance.removeClass('template');
         container.append(instance);
         container.fadeIn();
