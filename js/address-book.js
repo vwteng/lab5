@@ -38,7 +38,7 @@ function render(entries) {
         }
         instance.removeClass('template');
         container.append(instance);
-        container.fadeIn();
+        container.fadeIn(1000);
     });
 }
 
